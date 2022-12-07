@@ -1,6 +1,7 @@
 package lotto.view;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class InputValidator {
@@ -81,6 +82,18 @@ public class InputValidator {
     private void validateRange(String number) {
         int target = Integer.parseInt(number);
         if (target < LOTTO_NUMBER_LOWER_BOUND || target > LOTTO_NUMBER_UPPER_BOUND) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void validateBonusNumber(String input, List<Integer> winningLotto) {
+        validateRange(input);
+        int bonusNumber = Integer.parseInt(input);
+        validateDuplicate(winningLotto, bonusNumber);
+    }
+
+    private void validateDuplicate(List<Integer> winningLotto, int bonusNumber) {
+        if (winningLotto.contains(bonusNumber)) {
             throw new IllegalArgumentException();
         }
     }

@@ -1,5 +1,7 @@
 package lotto.view;
 
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InputView {
@@ -14,6 +16,12 @@ public class InputView {
     public String readWinningNumbers() {
         String input = readLine();
         inputValidator.validateWinningNumbers(input);
+        return input;
+    }
+
+    public String readBonusNumber(List<Integer> winningLotto) {
+        String input = readLine();
+        inputValidator.validateBonusNumber(input, winningLotto);
         return input;
     }
 }
