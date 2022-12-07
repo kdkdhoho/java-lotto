@@ -2,13 +2,12 @@ package lotto.view;
 
 import lotto.domain.Lotto;
 import lotto.domain.Manager;
+import lotto.service.LottoService;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class InputValidator {
-    public static final String DELIMITER = ",";
 
     public void validateMoney(String input) {
         int money;
@@ -34,7 +33,7 @@ public class InputValidator {
     }
 
     public void validateWinningNumbers(String input) {
-        String[] numbers = input.split(DELIMITER);
+        String[] numbers = input.split(LottoService.DELIMITER);
         trimNumbers(numbers);
 
         validateSize(numbers);
@@ -85,15 +84,8 @@ public class InputValidator {
         }
     }
 
-    public void validateBonusNumber(String input, List<Integer> winningLotto) {
+    public void validateBonusNumber(String input) {
         validateRange(input);
-        int bonusNumber = Integer.parseInt(input);
-        validateDuplicate(winningLotto, bonusNumber);
-    }
-
-    private void validateDuplicate(List<Integer> winningLotto, int bonusNumber) {
-        if (winningLotto.contains(bonusNumber)) {
-            throw new IllegalArgumentException();
-        }
+        Integer.parseInt(input);
     }
 }
