@@ -19,7 +19,7 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         validateSize(numbers);
         validateRange(numbers);
-        validateDuplication(numbers);
+        validateDuplicate(numbers);
     }
 
     private void validateSize(List<Integer> numbers) {
@@ -40,7 +40,7 @@ public class Lotto {
         }
     }
 
-    private void validateDuplication(List<Integer> numbers) {
+    private void validateDuplicate(List<Integer> numbers) {
         Set<Integer> container = new HashSet<>();
         for (Integer number : numbers) {
             container.add(number);
@@ -49,5 +49,9 @@ public class Lotto {
         if (container.size() != numbers.size()) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public boolean validateDuplicate(int number) {
+        return (numbers.contains(number));
     }
 }
