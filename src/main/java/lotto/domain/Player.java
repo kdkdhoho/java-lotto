@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.List;
+
 public class Player {
     private final Lottos lottos;
     private final int money;
@@ -25,5 +27,9 @@ public class Player {
         if (money < Manager.LOTTO_AMOUNT_UNIT) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public List<List<Integer>> getLottoNumbers() {
+        return lottos.getLottoNumbers();
     }
 }
