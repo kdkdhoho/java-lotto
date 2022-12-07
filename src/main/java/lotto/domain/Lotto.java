@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Set;
 
 public class Lotto {
-    public static final int LOWER_BOUND = 1;
-    public static final int UPPER_BOUND = 45;
+    public static final int NUMBER_LOWER_BOUND = 1;
+    public static final int NUMBER_UPPER_BOUND = 45;
     public static final int LOTTO_SIZE = 6;
 
     private final List<Integer> numbers;
@@ -35,7 +35,7 @@ public class Lotto {
     }
 
     private void validateRange(int number) {
-        if (number < LOWER_BOUND || number > UPPER_BOUND) {
+        if (number < NUMBER_LOWER_BOUND || number > NUMBER_UPPER_BOUND) {
             throw new IllegalArgumentException();
         }
     }
