@@ -6,7 +6,7 @@ import lotto.domain.Lotto;
 public class LottoNumberGenerator implements NumberGenerator {
 
     public int generate() {
-        return Randoms.pickNumberInRange(Lotto.LOWER_BOUND, Lotto.UPPER_BOUND);
+        return Randoms.pickNumberInRange(Lotto.NUMBER_LOWER_BOUND, Lotto.NUMBER_UPPER_BOUND);
     }
 
 }

@@ -10,4 +10,10 @@ public class InputView {
         inputValidator.validateMoney(input);
         return input;
     }
+
+    public String readWinningNumbers() {
+        String input = readLine();
+        inputValidator.validateWinningNumbers(input);
+        return input;
+    }
 }
