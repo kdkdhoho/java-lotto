@@ -25,7 +25,7 @@ class ManagerTest {
 
     @DisplayName("구입 금액에 해당하는만큼 로또 발행 금액과 장수 다르게 테스트")
     @Test
-    void exchange_fail() {
+    void exchange_Exception() {
         NumberGenerator numberGenerator = new LottoNumberGenerator();
         LottoMachine lottoMachine = new LottoMachine(numberGenerator);
         int money = 4000;
