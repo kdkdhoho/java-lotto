@@ -1,9 +1,7 @@
-package lotto.domain.numbergenerator;
+package lotto.domain;
 
-import lotto.domain.Lotto;
-import lotto.domain.LottoMachine;
-import lotto.domain.Lottos;
-import lotto.domain.Manager;
+import lotto.domain.numbergenerator.LottoNumberGenerator;
+import lotto.domain.numbergenerator.NumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -18,9 +16,9 @@ class PlayerTest {
     private final LottoMachine lottoMachine = new LottoMachine(numberGenerator);
     private final Manager manager = new Manager(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
 
-    @DisplayName("1,000원 단위가 아닌 값이 Player에 들어갈 때 IllegalArgumentException 발생")
+    @DisplayName("1,000원 단위가 아니거나 1,000원 미만인 값이 Player에 들어갈 때 IllegalArgumentException 발생")
     @ParameterizedTest
-    @ValueSource(ints = {1, 9, 99, 999, 1_001, 1_999})
+    @ValueSource(ints = {-999, -1, 0, 1, 9, 99, 999, 1_001, 1_999})
     void Player_Exception(int money) {
         Lottos lottos = manager.exchange(lottoMachine, 3000);
 

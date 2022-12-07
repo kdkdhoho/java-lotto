@@ -1,7 +1,4 @@
-package lotto.domain.numbergenerator;
-
-import lotto.domain.Lottos;
-import lotto.domain.Manager;
+package lotto.domain;
 
 public class Player {
     private final Lottos lottos;
@@ -14,7 +11,18 @@ public class Player {
     }
 
     private void validate(int money) {
+        validateUnit(money);
+        validateAmount(money);
+    }
+
+    private void validateUnit(int money) {
         if (money % Manager.LOTTO_AMOUNT_UNIT != 0) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateAmount(int money) {
+        if (money < Manager.LOTTO_AMOUNT_UNIT) {
             throw new IllegalArgumentException();
         }
     }
