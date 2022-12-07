@@ -1,14 +1,13 @@
 package lotto.view;
 
+import lotto.domain.Lotto;
+import lotto.domain.Manager;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class InputValidator {
-    public static final int MONEY_UNIT = 1_000;
-    public static final int LOTTO_SIZE = 6;
-    public static final int LOTTO_NUMBER_LOWER_BOUND = 1;
-    public static final int LOTTO_NUMBER_UPPER_BOUND = 45;
     public static final String DELIMITER = ",";
 
     public void validateMoney(String input) {
@@ -23,13 +22,13 @@ public class InputValidator {
     }
 
     private void validateAmount(int money) {
-        if (money < MONEY_UNIT) {
+        if (money < Manager.LOTTO_AMOUNT_UNIT) {
             throw new IllegalArgumentException();
         }
     }
 
     private void validateUnit(int money) {
-        if (money % MONEY_UNIT != 0) {
+        if (money % Manager.LOTTO_AMOUNT_UNIT != 0) {
             throw new IllegalArgumentException();
         }
     }
@@ -51,7 +50,7 @@ public class InputValidator {
     }
 
     private void validateSize(String[] numbers) {
-        if (numbers.length != LOTTO_SIZE) {
+        if (numbers.length != Lotto.LOTTO_SIZE) {
             throw new IllegalArgumentException();
         }
     }
@@ -81,7 +80,7 @@ public class InputValidator {
 
     private void validateRange(String number) {
         int target = Integer.parseInt(number);
-        if (target < LOTTO_NUMBER_LOWER_BOUND || target > LOTTO_NUMBER_UPPER_BOUND) {
+        if (target < Lotto.NUMBER_LOWER_BOUND || target > Lotto.NUMBER_UPPER_BOUND) {
             throw new IllegalArgumentException();
         }
     }
