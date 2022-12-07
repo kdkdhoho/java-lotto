@@ -5,10 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.assertThatNoException;
 
 class InputValidatorTest {
     private final InputValidator inputValidator = new InputValidator();
@@ -49,24 +47,22 @@ class InputValidatorTest {
         });
     }
 
-    @DisplayName("보너스 번호로 1~45 범위 외, 문자, 당첨 번호와 중복된 입력이 들어온 경우 IllegalArgumentException")
+    @DisplayName("보너스 번호로 1~45 범위 외, 문자 입력이 들어온 경우 IllegalArgumentException")
     @ParameterizedTest
-    @ValueSource(strings = {"0", "46", "a", "", " ", "6"})
+    @ValueSource(strings = {"0", "46", "a", "", " "})
     void validateBonusNumber_Exception(String input) {
-        List<Integer> winningLotto = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            inputValidator.validateBonusNumber(input, winningLotto);
+            inputValidator.validateBonusNumber(input);
         });
     }
 
     @DisplayName("보너스 번호로 적절한 값이 들어간 경우")
     @Test
     void validateBonusNumber() {
-        List<Integer> winningLotto = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
         String input = "7";
 
         assertThatNoException().isThrownBy(() -> {
-            inputValidator.validateBonusNumber(input, winningLotto);
+            inputValidator.validateBonusNumber(input);
         });
     }
 }
