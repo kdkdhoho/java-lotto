@@ -2,9 +2,6 @@ package lotto.domain;
 
 import lotto.view.InputValidator;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Manager {
     public static final int LOTTO_AMOUNT_UNIT = 1000;
 
@@ -23,18 +20,22 @@ public class Manager {
         }
     }
 
-    public Lottos exchange(LottoMachine lottoMachine, int money) {
-        List<Lotto> lottos = new ArrayList<>();
-
-        while (money > 0) {
-            lottos.add(lottoMachine.generateLotto());
-            money -= LOTTO_AMOUNT_UNIT;
-        }
-
-        return new Lottos(lottos);
-    }
-
     public int makeBonusNumber(LottoMachine lottoMachine) {
         return lottoMachine.generateBonusNumber(this.winningLotto);
+    }
+
+    public Lotto getWinningLotto() {
+        return winningLotto;
+    }
+
+    public BonusNumber getBonusNumber() {
+        return bonusNumber;
+    }
+
+    public Rank compare(Lotto playerLotto) {
+        int correctCount = winningLotto.compare(playerLotto);
+        boolean correctBonus = winningLotto.contains(this.bonusNumber);
+
+        return Rank.getRank(correctCount, correctBonus);
     }
 }

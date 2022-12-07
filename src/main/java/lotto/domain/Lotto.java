@@ -62,10 +62,22 @@ public class Lotto {
     }
 
     public List<Integer> getNumbers() {
+        Collections.sort(numbers);
         return Collections.unmodifiableList(numbers);
     }
 
     public boolean contains(BonusNumber bonusNumber) {
-        return numbers.contains(bonusNumber);
+        return numbers.contains(bonusNumber.getBonusNumber());
+    }
+
+    public int compare(Lotto otherLotto) {
+        List<Integer> otherLottoNumbers = otherLotto.getNumbers();
+        Set<Integer> container = new HashSet<>(this.numbers);
+
+        for (Integer number : otherLottoNumbers) {
+            container.remove(number);
+        }
+
+        return Lotto.LOTTO_SIZE - container.size();
     }
 }

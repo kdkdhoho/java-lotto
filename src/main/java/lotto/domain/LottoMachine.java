@@ -4,6 +4,7 @@ import lotto.domain.numbergenerator.NumberGenerator;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class LottoMachine {
@@ -11,6 +12,16 @@ public class LottoMachine {
 
     public LottoMachine(NumberGenerator numberGenerator) {
         this.numberGenerator = numberGenerator;
+    }
+
+    public Lottos exchange(int money) {
+        List<Lotto> lottos = new ArrayList<>();
+
+        while (money > 0) {
+            lottos.add(generateLotto());
+            money -= Manager.LOTTO_AMOUNT_UNIT;
+        }
+        return new Lottos(lottos);
     }
 
     public Lotto generateLotto() {

@@ -1,6 +1,8 @@
 package lotto.domain;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Player {
     private final Lottos lottos;
@@ -31,5 +33,20 @@ public class Player {
 
     public List<List<Integer>> getLottoNumbers() {
         return lottos.getLottoNumbers();
+    }
+
+    public Map<Rank, Integer> getResult(Manager manager) {
+        Map<Rank, Integer> ranks = new HashMap<>();
+
+        List<Lotto> lottos = this.lottos.getLottos();
+        for (Lotto lotto : lottos) {
+            Rank rank = manager.compare(lotto);
+            ranks.put(rank, ranks.getOrDefault(rank, 0) + 1);
+        }
+        return ranks;
+    }
+
+    public int getMoney() {
+        return money;
     }
 }

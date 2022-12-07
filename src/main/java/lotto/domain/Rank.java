@@ -32,10 +32,18 @@ public enum Rank {
         return prize;
     }
 
-    public Rank getRank(int correctCount, boolean correctBonus) {
+    public static Rank getRank(int correctCount, boolean correctBonus) {
         return Arrays.stream(Rank.values())
-                .filter(rank -> this.correctCount == correctCount && this.correctBonus == correctBonus)
+                .filter(rank -> rank.isCorrectCount(correctCount) && rank.isCorrectBonus(correctBonus))
                 .findFirst()
                 .orElse(NONE);
+    }
+
+    public boolean isCorrectCount(int correctCount) {
+        return this.correctCount == correctCount;
+    }
+
+    public boolean isCorrectBonus(boolean correctBonus) {
+        return this.correctBonus == correctBonus;
     }
 }

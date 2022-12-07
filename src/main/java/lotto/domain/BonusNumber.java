@@ -22,7 +22,7 @@ public class BonusNumber {
 
     private void validateRange(int number) {
         if (number < Lotto.NUMBER_LOWER_BOUND || number > Lotto.NUMBER_UPPER_BOUND) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
 

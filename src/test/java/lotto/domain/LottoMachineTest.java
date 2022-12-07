@@ -5,6 +5,7 @@ import lotto.domain.numbergenerator.NumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 
 class LottoMachineTest {
@@ -18,5 +19,27 @@ class LottoMachineTest {
                 .isThrownBy(() -> {
                     lottoMachine.generateLotto();
                 });
+    }
+
+    @DisplayName("구입 금액에 해당하는만큼 로또 발행")
+    @Test
+    void exchange() {
+        int money = 3000;
+
+        Lottos lottos = lottoMachine.exchange(money);
+        assertThat(lottos).extracting("lottos")
+                .extracting("size")
+                .isEqualTo(3);
+    }
+
+    @DisplayName("구입 금액에 해당하는만큼 로또 발행 금액과 장수 다르게 테스트")
+    @Test
+    void exchange_Exception() {
+        int money = 4000;
+
+        Lottos lottos = lottoMachine.exchange(money);
+        assertThat(lottos).extracting("lottos")
+                .extracting("size")
+                .isNotEqualTo(3);
     }
 }

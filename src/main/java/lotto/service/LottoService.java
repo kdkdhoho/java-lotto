@@ -20,7 +20,7 @@ public class LottoService {
 
     public void setPlayer(String input) {
         int money = Integer.parseInt(input);
-        Lottos lottos = manager.exchange(lottoMachine, money);
+        Lottos lottos = lottoMachine.exchange(money);
         player = new Player(lottos, money);
     }
 
@@ -41,6 +41,11 @@ public class LottoService {
     }
 
     public Map<Rank, Integer> getResult() {
-        
+        Map<Rank, Integer> result = player.getResult(manager);
+        return result;
+    }
+
+    public int getPlayerMoney() {
+        return player.getMoney();
     }
 }
