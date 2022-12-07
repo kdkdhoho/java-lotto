@@ -20,6 +20,18 @@ public enum Rank {
         this.prize = prize;
     }
 
+    public int getCorrectCount() {
+        return correctCount;
+    }
+
+    public boolean isCorrectBonus() {
+        return correctBonus;
+    }
+
+    public int getPrize() {
+        return prize;
+    }
+
     public Rank getRank(int correctCount, boolean correctBonus) {
         return Arrays.stream(Rank.values())
                 .filter(rank -> this.correctCount == correctCount && this.correctBonus == correctBonus)
