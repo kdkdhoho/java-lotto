@@ -13,7 +13,7 @@ public class LottoMachine {
         this.numberGenerator = numberGenerator;
     }
 
-    public Lotto generateLotto(NumberGenerator numberGenerator) {
+    public Lotto generateLotto() {
         Set<Integer> numbers = new HashSet<>();
         while (numbers.size() < Lotto.LOTTO_SIZE) {
             numbers.add(numberGenerator.generate());
@@ -21,10 +21,10 @@ public class LottoMachine {
         return new Lotto(new ArrayList<>(numbers));
     }
 
-    public int generateBonusNumber(Lotto winningLotto, NumberGenerator numberGenerator) {
+    public int generateBonusNumber(Lotto winningLotto) {
         int bonusNumber = numberGenerator.generate();
         if (winningLotto.validateDuplicate(bonusNumber)) {
-            return generateBonusNumber(winningLotto, numberGenerator);
+            return generateBonusNumber(winningLotto);
         }
         return bonusNumber;
     }
