@@ -1,7 +1,5 @@
 package lotto.view;
 
-import java.util.List;
-
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InputView {
@@ -21,7 +19,7 @@ public class InputView {
         return input;
     }
 
-    public String readBonusNumber(List<Integer> winningLotto) {
+    public String readBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String input = readLine();
         inputValidator.validateBonusNumber(input);

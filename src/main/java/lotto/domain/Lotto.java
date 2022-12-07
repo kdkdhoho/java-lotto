@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Lotto {
+    public static final String ERROR_MESSAGE = "[ERROR] Lotto 생성 중 예외가 발생했습니다.";
     public static final int NUMBER_LOWER_BOUND = 1;
     public static final int NUMBER_UPPER_BOUND = 45;
     public static final int LOTTO_SIZE = 6;
@@ -18,9 +19,13 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        validateSize(numbers);
-        validateRange(numbers);
-        validateDuplicate(numbers);
+        try {
+            validateSize(numbers);
+            validateRange(numbers);
+            validateDuplicate(numbers);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+        }
     }
 
     private void validateSize(List<Integer> numbers) {
@@ -58,5 +63,9 @@ public class Lotto {
 
     public List<Integer> getNumbers() {
         return Collections.unmodifiableList(numbers);
+    }
+
+    public boolean contains(BonusNumber bonusNumber) {
+        return numbers.contains(bonusNumber);
     }
 }

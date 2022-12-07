@@ -71,8 +71,7 @@ public class InputValidator {
         try {
             return Integer.parseInt(number);
         } catch (IllegalArgumentException e) {
-            e = new IllegalArgumentException(ERROR_NOT_NUMERIC);
-            throw e;
+            throw new IllegalArgumentException(ERROR_NOT_NUMERIC);
         }
     }
 
