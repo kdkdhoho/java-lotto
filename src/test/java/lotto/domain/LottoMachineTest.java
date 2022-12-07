@@ -5,9 +5,6 @@ import lotto.domain.numbergenerator.NumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 
 class LottoMachineTest {
@@ -22,15 +19,4 @@ class LottoMachineTest {
                     lottoMachine.generateLotto();
                 });
     }
-
-    @DisplayName("보너스 넘버를 뽑았을 때 우승 번호에 중복되지 않는 번호를 뽑아야 한다")
-    @Test
-    void generateBonusNumber() {
-        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-
-        int result = lottoMachine.generateBonusNumber(winningLotto);
-
-        assertThat(result).isNotIn(winningLotto);
-    }
-
 }
