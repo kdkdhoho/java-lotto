@@ -9,12 +9,12 @@ import java.util.Set;
 
 public class InputValidator {
     public static final String ERROR_PREFIX = "[ERROR] ";
-    public static final String ERROR_MONEY_AMOUNT = ERROR_PREFIX + " 금액은 1,000원 이상입니다.";
-    public static final String ERROR_MONEY_UNIT = ERROR_PREFIX + " 금액은 1,000원 단위입니다.";
-    public static final String ERROR_NUMBER_LENGTH = ERROR_PREFIX + " 당첨 번호는 6개 입니다.";
-    public static final String ERROR_NOT_NUMERIC = ERROR_PREFIX + " 숫자를 입력해주세요.";
-    public static final String ERROR_NUMBER_DUPLICATE = ERROR_PREFIX + " 당첨 번호는 중복될 수 없습니다.";
-    public static final String ERROR_NUMBER_RANGE = ERROR_PREFIX + " 당첨 번호는 1부터 45 사이의 수 입니다.";
+    public static final String ERROR_MONEY_AMOUNT = ERROR_PREFIX + "금액은 1,000원 이상입니다.";
+    public static final String ERROR_MONEY_UNIT = ERROR_PREFIX + "금액은 1,000원 단위입니다.";
+    public static final String ERROR_NUMBER_LENGTH = ERROR_PREFIX + "당첨 번호는 6개 입니다.";
+    public static final String ERROR_NOT_NUMERIC = ERROR_PREFIX + "숫자를 입력해주세요.";
+    public static final String ERROR_NUMBER_DUPLICATE = ERROR_PREFIX + "당첨 번호는 중복될 수 없습니다.";
+    public static final String ERROR_NUMBER_RANGE = ERROR_PREFIX + "당첨 번호는 1부터 45 사이의 수 입니다.";
 
     public void validateMoney(String input) {
         int money;
@@ -24,6 +24,14 @@ public class InputValidator {
             validateUnit(money);
         } catch (IllegalArgumentException e) {
             throw e;
+        }
+    }
+
+    private int isNumeric(String number) {
+        try {
+            return Integer.parseInt(number);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(ERROR_NOT_NUMERIC);
         }
     }
 
@@ -63,15 +71,7 @@ public class InputValidator {
 
     private void validateNumber(String[] numbers) {
         for (String number : numbers) {
-            Integer.parseInt(number);
-        }
-    }
-
-    private int isNumeric(String number) {
-        try {
-            return Integer.parseInt(number);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(ERROR_NOT_NUMERIC);
+            isNumeric(number);
         }
     }
 
