@@ -70,9 +70,9 @@ public class Lotto {
 
     public int compare(Lotto otherLotto) {
         List<Integer> otherLottoNumbers = otherLotto.getNumbers();
-        Set<Integer> container = new HashSet<>(this.numbers);
+        Set<Integer> container = new HashSet<>(otherLottoNumbers);
 
-        for (Integer number : otherLottoNumbers) {
+        for (Integer number : this.numbers) {
             container.remove(number);
         }
 

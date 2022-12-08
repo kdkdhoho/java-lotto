@@ -1,6 +1,12 @@
 package lotto.service;
 
-import lotto.domain.*;
+import lotto.domain.BonusNumber;
+import lotto.domain.Lotto;
+import lotto.domain.LottoMachine;
+import lotto.domain.Lottos;
+import lotto.domain.Manager;
+import lotto.domain.Player;
+import lotto.domain.Rank;
 import lotto.domain.numbergenerator.LottoNumbersGenerator;
 import lotto.domain.numbergenerator.NumberGenerator;
 
@@ -14,7 +20,6 @@ public class LottoService {
 
     private final NumberGenerator numberGenerator = new LottoNumbersGenerator();
     private final LottoMachine lottoMachine = new LottoMachine(numberGenerator);
-
     private Player player;
     private Manager manager;
 
@@ -28,13 +33,13 @@ public class LottoService {
         return player.getLottoNumbers();
     }
 
-    public void setManager(String winningNumbers, String bonusNubmer) {
-        List<Integer> winningNumbersResult = Arrays.stream(winningNumbers.split(DELIMITER))
+    public void setManager(String winningNumbersInput, String bonusNubmer) {
+        List<Integer> winningNumbers = Arrays.stream(winningNumbersInput.split(DELIMITER))
                 .map(String::trim)
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
 
-        Lotto winningLotto = new Lotto(winningNumbersResult);
+        Lotto winningLotto = new Lotto(winningNumbers);
         BonusNumber bonusNumberResult = new BonusNumber(Integer.parseInt(bonusNubmer));
 
         manager = new Manager(winningLotto, bonusNumberResult);

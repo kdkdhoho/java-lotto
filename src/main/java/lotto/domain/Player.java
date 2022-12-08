@@ -36,14 +36,14 @@ public class Player {
     }
 
     public Map<Rank, Integer> getResult(Manager manager) {
-        Map<Rank, Integer> ranks = new HashMap<>();
+        Map<Rank, Integer> result = new HashMap<>();
 
         List<Lotto> lottos = this.lottos.getLottos();
         for (Lotto lotto : lottos) {
             Rank rank = manager.compare(lotto);
-            ranks.put(rank, ranks.getOrDefault(rank, 0) + 1);
+            result.put(rank, result.getOrDefault(rank, 0) + 1);
         }
-        return ranks;
+        return result;
     }
 
     public int getMoney() {
