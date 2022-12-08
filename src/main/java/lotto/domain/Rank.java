@@ -24,10 +24,6 @@ public enum Rank {
         return correctCount;
     }
 
-    public boolean isCorrectBonus() {
-        return correctBonus;
-    }
-
     public int getPrize() {
         return prize;
     }
