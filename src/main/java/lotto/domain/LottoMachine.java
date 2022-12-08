@@ -26,13 +26,4 @@ public class LottoMachine {
         List<Integer> numbers = numberGenerator.generate();
         return new Lotto(numbers);
     }
-
-    public int generateBonusNumber(Lotto winningLotto) {
-        List<Integer> numbers = numberGenerator.generate();
-        int bonusNumber = numbers.get(0);
-        if (winningLotto.validateDuplicate(bonusNumber)) {
-            return generateBonusNumber(winningLotto);
-        }
-        return bonusNumber;
-    }
 }

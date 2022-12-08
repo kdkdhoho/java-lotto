@@ -20,10 +20,6 @@ public class Manager {
         }
     }
 
-    public int makeBonusNumber(LottoMachine lottoMachine) {
-        return lottoMachine.generateBonusNumber(this.winningLotto);
-    }
-
     public Rank compare(Lotto playerLotto) {
         int correctCount = this.winningLotto.compare(playerLotto);
         boolean correctBonus = this.winningLotto.contains(this.bonusNumber);
