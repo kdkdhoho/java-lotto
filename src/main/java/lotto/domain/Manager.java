@@ -16,20 +16,12 @@ public class Manager {
 
     private void validate(Lotto winningLotto, BonusNumber bonusNumber) {
         if (winningLotto.contains(bonusNumber)) {
-            throw new IllegalArgumentException(InputValidator.ERROR_PREFIX + " 당첨 번호와 보너스 번호가 중복되었습니다.");
+            throw new IllegalArgumentException(InputValidator.ERROR_PREFIX + "당첨 번호와 보너스 번호가 중복되었습니다.");
         }
     }
 
     public int makeBonusNumber(LottoMachine lottoMachine) {
         return lottoMachine.generateBonusNumber(this.winningLotto);
-    }
-
-    public Lotto getWinningLotto() {
-        return winningLotto;
-    }
-
-    public BonusNumber getBonusNumber() {
-        return bonusNumber;
     }
 
     public Rank compare(Lotto playerLotto) {
