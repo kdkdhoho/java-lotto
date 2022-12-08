@@ -3,7 +3,7 @@ package lotto.domain;
 import lotto.view.InputValidator;
 
 public class BonusNumber {
-    public static final String ERROR_MESSAGE = InputValidator.ERROR_PREFIX + "BonusNumber 생성 중 예외가 발생했습니다.";
+    public static final String ERROR_MESSAGE = InputValidator.ERROR_PREFIX + "보너스 번호가 1부터 45 사이의 숫자가 아닙니다.";
 
     private final int bonusNumber;
 
