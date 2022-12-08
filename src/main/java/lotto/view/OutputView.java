@@ -2,7 +2,10 @@ package lotto.view;
 
 import lotto.domain.Rank;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.StringJoiner;
 
 public class OutputView {
     public static final int PERCENTAGE = 100;
@@ -14,9 +17,9 @@ public class OutputView {
         }
     }
 
-    private String join(List<Integer> lotto) {
+    private String join(List<Integer> numbers) {
         StringJoiner stringJoiner = new StringJoiner(", ", "[", "]");
-        for (Integer number : lotto) {
+        for (Integer number : numbers) {
             stringJoiner.add(String.valueOf(number));
         }
 
