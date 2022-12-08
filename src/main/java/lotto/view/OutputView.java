@@ -1,6 +1,7 @@
 package lotto.view;
 
 import lotto.domain.Rank;
+import lotto.service.LottoService;
 
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,8 @@ import java.util.StringJoiner;
 
 public class OutputView {
     public static final int PERCENTAGE = 100;
+    public static final String PREFIX = "[";
+    public static final String SUFFIX = "]";
 
     public void printPurchase(List<List<Integer>> lottos) {
         System.out.printf("%d개를 구매했습니다.\n", lottos.size());
@@ -18,7 +21,7 @@ public class OutputView {
     }
 
     private String join(List<Integer> numbers) {
-        StringJoiner stringJoiner = new StringJoiner(", ", "[", "]");
+        StringJoiner stringJoiner = new StringJoiner(LottoService.DELIMITER, PREFIX, SUFFIX);
         for (Integer number : numbers) {
             stringJoiner.add(String.valueOf(number));
         }
