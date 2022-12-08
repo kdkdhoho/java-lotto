@@ -1,6 +1,8 @@
 package lotto.domain.numbergenerator;
 
+import java.util.List;
+
 public interface NumberGenerator {
 
-    int generate();
+    List<Integer> generate();
 }

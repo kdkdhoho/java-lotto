@@ -5,6 +5,7 @@ import lotto.domain.Rank;
 import java.util.*;
 
 public class OutputView {
+    public static final int PERCENTAGE = 100;
 
     public void printPurchase(List<List<Integer>> lottos) {
         System.out.printf("%d개를 구매했습니다.\n", lottos.size());
@@ -23,7 +24,7 @@ public class OutputView {
     }
 
     public void printTotalResult(Map<Rank, Integer> ranks, int money) {
-        System.out.println("당첨 통계\n---");
+        System.out.println("\n당첨 통계\n---");
         printOverview(ranks);
         printRateOfReturn(ranks, money);
     }
@@ -39,7 +40,7 @@ public class OutputView {
     private void printRateOfReturn(Map<Rank, Integer> ranks, int money) {
         Long totalPrize = totalPrize(ranks);
         double rateOfReturn = calculateRateOfReturn(totalPrize, money);
-        System.out.println(String.format("총 수익률은 %.1f 입니다.", rateOfReturn));
+        System.out.println(String.format("총 수익률은 %.1f%%입니다.", rateOfReturn));
     }
 
     private Long totalPrize(Map<Rank, Integer> ranks) {
@@ -54,6 +55,6 @@ public class OutputView {
     }
 
     private double calculateRateOfReturn(Long totalPrize, int money) {
-        return (double)totalPrize / money;
+        return ((double)totalPrize / money) * PERCENTAGE;
     }
 }

@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.domain.numbergenerator.LottoNumberGenerator;
+import lotto.domain.numbergenerator.LottoNumbersGenerator;
 import lotto.domain.numbergenerator.NumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import static org.assertj.core.api.Assertions.assertThatNoException;
 
 class PlayerTest {
-    private final NumberGenerator numberGenerator = new LottoNumberGenerator();
+    private final NumberGenerator numberGenerator = new LottoNumbersGenerator();
     private final LottoMachine lottoMachine = new LottoMachine(numberGenerator);
     private final Manager manager = new Manager(new Lotto(List.of(1, 2, 3, 4, 5, 6)), new BonusNumber(7));
 

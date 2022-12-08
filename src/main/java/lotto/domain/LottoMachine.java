@@ -3,9 +3,7 @@ package lotto.domain;
 import lotto.domain.numbergenerator.NumberGenerator;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class LottoMachine {
     private final NumberGenerator numberGenerator;
@@ -25,15 +23,13 @@ public class LottoMachine {
     }
 
     public Lotto generateLotto() {
-        Set<Integer> numbers = new HashSet<>();
-        while (numbers.size() < Lotto.LOTTO_SIZE) {
-            numbers.add(numberGenerator.generate());
-        }
-        return new Lotto(new ArrayList<>(numbers));
+        List<Integer> numbers = numberGenerator.generate();
+        return new Lotto(numbers);
     }
 
     public int generateBonusNumber(Lotto winningLotto) {
-        int bonusNumber = numberGenerator.generate();
+        List<Integer> numbers = numberGenerator.generate();
+        int bonusNumber = numbers.get(0);
         if (winningLotto.validateDuplicate(bonusNumber)) {
             return generateBonusNumber(winningLotto);
         }

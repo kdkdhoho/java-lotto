@@ -1,9 +1,6 @@
 package lotto.domain;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Lotto {
     public static final String ERROR_MESSAGE = "[ERROR] Lotto 생성 중 예외가 발생했습니다.";
@@ -62,8 +59,9 @@ public class Lotto {
     }
 
     public List<Integer> getNumbers() {
-        Collections.sort(numbers);
-        return Collections.unmodifiableList(numbers);
+        ArrayList<Integer> result = new ArrayList<>(this.numbers);
+        Collections.sort(result);
+        return Collections.unmodifiableList(result);
     }
 
     public boolean contains(BonusNumber bonusNumber) {

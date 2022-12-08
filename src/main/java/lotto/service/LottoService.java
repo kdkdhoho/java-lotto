@@ -1,7 +1,7 @@
 package lotto.service;
 
 import lotto.domain.*;
-import lotto.domain.numbergenerator.LottoNumberGenerator;
+import lotto.domain.numbergenerator.LottoNumbersGenerator;
 import lotto.domain.numbergenerator.NumberGenerator;
 
 import java.util.Arrays;
@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class LottoService {
     public static final String DELIMITER = ",";
 
-    private final NumberGenerator numberGenerator = new LottoNumberGenerator();
+    private final NumberGenerator numberGenerator = new LottoNumbersGenerator();
     private final LottoMachine lottoMachine = new LottoMachine(numberGenerator);
 
     private Player player;
