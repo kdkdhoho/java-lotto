@@ -8,15 +8,12 @@ import lotto.domain.Money;
 import lotto.domain.Number;
 import lotto.domain.Player;
 import lotto.domain.Rank;
-import lotto.domain.numbergenerator.LottoNumbersGenerator;
-import lotto.domain.numbergenerator.NumberGenerator;
 
 import java.util.List;
 import java.util.Map;
 
 public class LottoService {
-    private final NumberGenerator numberGenerator = new LottoNumbersGenerator();
-    private final LottoMachine lottoMachine = new LottoMachine(numberGenerator);
+    private final LottoMachine lottoMachine = new LottoMachine();
     private Player player;
     private Manager manager;
 

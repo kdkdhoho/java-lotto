@@ -1,16 +1,13 @@
 package lotto.domain;
 
+import lotto.domain.numbergenerator.LottoNumbersGenerator;
 import lotto.domain.numbergenerator.NumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LottoMachine {
-    private final NumberGenerator numberGenerator;
-
-    public LottoMachine(NumberGenerator numberGenerator) {
-        this.numberGenerator = numberGenerator;
-    }
+    private final NumberGenerator numberGenerator = new LottoNumbersGenerator();
 
     public Lottos exchange(Money purchaseMoney) {
         List<Lotto> lottos = new ArrayList<>();
