@@ -1,8 +1,6 @@
 package lotto.domain;
 
 public class Manager {
-    public static final int LOTTO_AMOUNT_UNIT = 1000;
-
     private final Lotto winningLotto;
     private final Number number;
 

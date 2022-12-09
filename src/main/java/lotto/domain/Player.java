@@ -6,29 +6,11 @@ import java.util.Map;
 
 public class Player {
     private final Lottos lottos;
-    private final int money;
+    private final Money money;
 
-    public Player(Lottos lottos, int money) {
-        validate(money);
+    public Player(Lottos lottos, Money money) {
         this.lottos = lottos;
         this.money = money;
-    }
-
-    private void validate(int money) {
-        validateUnit(money);
-        validateAmount(money);
-    }
-
-    private void validateUnit(int money) {
-        if (money % Manager.LOTTO_AMOUNT_UNIT != 0) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void validateAmount(int money) {
-        if (money < Manager.LOTTO_AMOUNT_UNIT) {
-            throw new IllegalArgumentException();
-        }
     }
 
     public List<List<Integer>> getLottoNumbers() {
@@ -47,6 +29,6 @@ public class Player {
     }
 
     public int getMoney() {
-        return money;
+        return money.getMoney();
     }
 }

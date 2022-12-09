@@ -34,4 +34,8 @@ public class Money {
     public void subUnit() {
         this.money -= UNIT;
     }
+
+    public int getMoney() {
+        return this.money;
+    }
 }

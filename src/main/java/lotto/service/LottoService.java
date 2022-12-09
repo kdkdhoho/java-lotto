@@ -22,7 +22,7 @@ public class LottoService {
 
     public void setPlayer(int purchaseMoney) {
         Lottos purchasedLottos = lottoMachine.exchange(new Money(purchaseMoney));
-        player = new Player(purchasedLottos, purchaseMoney);
+        player = new Player(purchasedLottos, new Money(purchaseMoney));
     }
 
     public List<List<Integer>> getPlayerLottoNumbers() {
