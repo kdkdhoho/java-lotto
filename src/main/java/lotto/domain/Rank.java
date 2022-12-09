@@ -27,10 +27,6 @@ public enum Rank {
                 .orElse(NONE);
     }
 
-    public long calculate(int amount) {
-        return this.prize * (long)amount;
-    }
-
     public int getCorrectCount() {
         return correctCount;
     }

@@ -48,11 +48,10 @@ public class Lotto {
     }
 
     public int compare(Lotto otherLotto) {
-        List<Integer> otherLottoNumbers = otherLotto.getNumbersToInt();
-        Set<Integer> container = new HashSet<>(otherLottoNumbers);
+        Set<Integer> container = new HashSet<>(otherLotto.getNumbersToInt());
 
         for (Number number : this.numbers) {
-            container.remove(number);
+            number.remove(container);
         }
 
         return Lotto.SIZE - container.size();

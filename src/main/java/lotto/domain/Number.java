@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Number {
@@ -29,5 +30,10 @@ public class Number {
                 .map(Number::getNumber)
                 .sorted()
                 .collect(Collectors.toList());
+    }
+
+    public Set<Integer> remove(Set<Integer> container) {
+        container.remove(this.number);
+        return container;
     }
 }

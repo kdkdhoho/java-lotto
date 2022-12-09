@@ -36,16 +36,12 @@ public class Player {
     }
 
     public Map<Rank, Integer> getResult(Manager manager) {
-        Map<Rank, Integer> result = new EnumMap<>(Rank.class) {{
-            for (Rank rank : Rank.values()) {
-                put(rank, 0);
-            }
-        }};
+        Map<Rank, Integer> result = new EnumMap<>(Rank.class);
 
         List<Lotto> lottos = this.lottos.getLottos();
         for (Lotto lotto : lottos) {
             Rank rank = manager.compare(lotto);
-            result.put(rank, result.get(rank) + 1);
+            result.put(rank, result.getOrDefault(rank, 0) + 1);
         }
         return result;
     }
