@@ -1,5 +1,6 @@
 package lotto.service;
 
+import lotto.domain.Money;
 import lotto.domain.Number;
 import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
@@ -20,7 +21,7 @@ public class LottoService {
     private Manager manager;
 
     public void setPlayer(int purchaseMoney) {
-        Lottos purchasedLottos = lottoMachine.exchange(purchaseMoney);
+        Lottos purchasedLottos = lottoMachine.exchange(new Money(purchaseMoney));
         player = new Player(purchasedLottos, purchaseMoney);
     }
 
