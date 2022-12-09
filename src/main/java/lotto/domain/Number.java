@@ -36,4 +36,8 @@ public class Number {
         container.remove(this.number);
         return container;
     }
+
+    public boolean equals(Number otherNumber) {
+        return (this.number == otherNumber.number);
+    }
 }

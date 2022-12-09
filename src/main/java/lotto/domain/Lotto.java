@@ -44,7 +44,8 @@ public class Lotto {
     }
 
     public boolean contains(Number number) {
-        return numbers.contains(number.getNumber());
+        return this.numbers.stream()
+                .anyMatch(number::equals);
     }
 
     public int compare(Lotto otherLotto) {
