@@ -23,7 +23,7 @@ class PlayerTest {
         Lottos lottos = lottoMachine.exchange(new Money(3000));
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
-                new Player(lottos, money);
+                new Player(lottos, new Money(money));
             });
     }
 
@@ -34,7 +34,7 @@ class PlayerTest {
         Lottos lottos = lottoMachine.exchange(new Money(3000));
 
         assertThatNoException().isThrownBy(() -> {
-                new Player(lottos, money);
+                new Player(lottos, new Money(money));
             });
     }
 }
