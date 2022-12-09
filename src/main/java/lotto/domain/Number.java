@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Number {
     public static final int NUMBER_LOWER_BOUND = 1;
     public static final int NUMBER_UPPER_BOUND = 45;
@@ -19,5 +22,12 @@ public class Number {
 
     public int getNumber() {
         return number;
+    }
+
+    public static List<Integer> ofSortedList(List<Number> numbers) {
+        return numbers.stream()
+                .map(Number::getNumber)
+                .sorted()
+                .collect(Collectors.toList());
     }
 }

@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,11 +39,8 @@ public class Lotto {
                 .collect(Collectors.toList());
     }
 
-    public List<Number> getNumbers() {
-        List<Number> result = numbers.stream()
-                .sorted()
-                .collect(Collectors.toList());
-        return Collections.unmodifiableList(result);
+    public List<Integer> getNumbersToInt() {
+        return Number.ofSortedList(this.numbers);
     }
 
     public boolean contains(Number number) {
@@ -52,8 +48,8 @@ public class Lotto {
     }
 
     public int compare(Lotto otherLotto) {
-        List<Number> otherLottoNumbers = otherLotto.getNumbers();
-        Set<Number> container = new HashSet<>(otherLottoNumbers);
+        List<Integer> otherLottoNumbers = otherLotto.getNumbersToInt();
+        Set<Integer> container = new HashSet<>(otherLottoNumbers);
 
         for (Number number : this.numbers) {
             container.remove(number);

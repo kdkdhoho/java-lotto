@@ -1,11 +1,11 @@
 package lotto.service;
 
-import lotto.domain.Money;
-import lotto.domain.Number;
 import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.Lottos;
 import lotto.domain.Manager;
+import lotto.domain.Money;
+import lotto.domain.Number;
 import lotto.domain.Player;
 import lotto.domain.Rank;
 import lotto.domain.numbergenerator.LottoNumbersGenerator;
@@ -37,8 +37,7 @@ public class LottoService {
     }
 
     public Map<Rank, Integer> getResult() {
-        Map<Rank, Integer> result = player.getResult(manager);
-        return result;
+        return player.getResult(manager);
     }
 
     public int getPlayerMoney() {

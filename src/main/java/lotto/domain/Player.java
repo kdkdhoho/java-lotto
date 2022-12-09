@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,12 +36,16 @@ public class Player {
     }
 
     public Map<Rank, Integer> getResult(Manager manager) {
-        Map<Rank, Integer> result = new HashMap<>();
+        Map<Rank, Integer> result = new EnumMap<>(Rank.class) {{
+            for (Rank rank : Rank.values()) {
+                put(rank, 0);
+            }
+        }};
 
         List<Lotto> lottos = this.lottos.getLottos();
         for (Lotto lotto : lottos) {
             Rank rank = manager.compare(lotto);
-            result.put(rank, result.getOrDefault(rank, 0) + 1);
+            result.put(rank, result.get(rank) + 1);
         }
         return result;
     }

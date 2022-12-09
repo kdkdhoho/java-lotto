@@ -3,7 +3,7 @@ package lotto.domain;
 public class Money {
     public static final int UNIT = 1_000;
 
-    private final int money;
+    private int money;
 
     public Money(int money) {
         validate(money);
@@ -27,11 +27,11 @@ public class Money {
         }
     }
 
-    public boolean isBiggerThanUnit() {
-        return money > UNIT;
+    public boolean isBiggerOrEqualThanUnit() {
+        return money >= UNIT;
     }
 
-    public Money subUnit() {
-        return new Money(this.money - UNIT);
+    public void subUnit() {
+        this.money -= UNIT;
     }
 }

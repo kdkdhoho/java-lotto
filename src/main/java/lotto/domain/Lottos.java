@@ -13,7 +13,7 @@ public class Lottos {
 
     public List<List<Integer>> getLottoNumbers() {
         return lottos.stream()
-                .map(Lotto::getNumbers)
+                .map(Lotto::getNumbersToInt)
                 .collect(Collectors.toList());
     }
 

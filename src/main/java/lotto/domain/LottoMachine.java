@@ -15,9 +15,9 @@ public class LottoMachine {
     public Lottos exchange(Money purchaseMoney) {
         List<Lotto> lottos = new ArrayList<>();
 
-        while (purchaseMoney.isBiggerThanUnit()) {
+        while (purchaseMoney.isBiggerOrEqualThanUnit()) {
             lottos.add(generateLotto());
-            purchaseMoney = purchaseMoney.subUnit();
+            purchaseMoney.subUnit();
         }
         return new Lottos(lottos);
     }

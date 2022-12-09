@@ -20,7 +20,7 @@ class PlayerTest {
     @ParameterizedTest
     @ValueSource(ints = {-999, -1, 0, 1, 9, 99, 999, 1_001, 1_999})
     void Player_Exception(int money) {
-        Lottos lottos = lottoMachine.exchange(3000);
+        Lottos lottos = lottoMachine.exchange(new Money(3000));
 
         assertThatIllegalArgumentException().isThrownBy(() -> {
                 new Player(lottos, money);
@@ -31,7 +31,7 @@ class PlayerTest {
     @ParameterizedTest
     @ValueSource(ints = {1_000, 2_000, 1_000_000})
     void Player(int money) {
-        Lottos lottos = lottoMachine.exchange(3000);
+        Lottos lottos = lottoMachine.exchange(new Money(3000));
 
         assertThatNoException().isThrownBy(() -> {
                 new Player(lottos, money);
