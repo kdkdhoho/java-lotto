@@ -10,10 +10,8 @@ import lotto.domain.Rank;
 import lotto.domain.numbergenerator.LottoNumbersGenerator;
 import lotto.domain.numbergenerator.NumberGenerator;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class LottoService {
     public static final String DELIMITER = ",";
@@ -23,8 +21,7 @@ public class LottoService {
     private Player player;
     private Manager manager;
 
-    public void setPlayer(String input) {
-        int money = Integer.parseInt(input);
+    public void setPlayer(int money) {
         Lottos lottos = lottoMachine.exchange(money);
         player = new Player(lottos, money);
     }
@@ -33,14 +30,9 @@ public class LottoService {
         return player.getLottoNumbers();
     }
 
-    public void setManager(String winningNumbersInput, String bonusNubmer) {
-        List<Integer> winningNumbers = Arrays.stream(winningNumbersInput.split(DELIMITER))
-                .map(String::trim)
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-
+    public void setManager(List<Integer> winningNumbers, int bonusNumber) {
         Lotto winningLotto = new Lotto(winningNumbers);
-        BonusNumber bonusNumberResult = new BonusNumber(Integer.parseInt(bonusNubmer));
+        BonusNumber bonusNumberResult = new BonusNumber(bonusNumber);
 
         manager = new Manager(winningLotto, bonusNumberResult);
     }

@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.StringJoiner;
 
 public class OutputView {
+    public static final String ERROR_PREFIX = "[ERROR] ";
     public static final int PERCENTAGE = 100;
     public static final String DELIMITER = ", ";
     public static final String PREFIX = "[";
@@ -65,6 +66,6 @@ public class OutputView {
     }
 
     public void printError(String message) {
-        System.out.println(message);
+        System.out.println(ERROR_PREFIX + " " + message);
     }
 }

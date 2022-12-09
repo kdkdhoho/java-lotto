@@ -5,6 +5,7 @@ import lotto.service.LottoService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
+import java.util.List;
 import java.util.Map;
 
 public class LottoController {
@@ -23,14 +24,14 @@ public class LottoController {
     }
 
     private void setPlayer() {
-        String money = inputView.readMoney();
+        int money = inputView.readMoney();
         lottoService.setPlayer(money);
         outputView.printPurchase(lottoService.getPlayerLottoNumbers());
     }
 
     private void setManager() {
-        String winningNumbers = inputView.readWinningNumbers();
-        String bonusNumber = inputView.readBonusNumber();
+        List<Integer> winningNumbers = inputView.readWinningNumbers();
+        int bonusNumber = inputView.readBonusNumber();
         lottoService.setManager(winningNumbers, bonusNumber);
     }
 
