@@ -13,9 +13,13 @@ public class LottoController {
     private final LottoService lottoService = new LottoService();
 
     public void run() {
-        setPlayer();
-        setManager();
-        printTotalResult();
+        try {
+            setPlayer();
+            setManager();
+            printTotalResult();
+        } catch (IllegalArgumentException e) {
+            outputView.printError(e.getMessage());
+        }
     }
 
     private void setPlayer() {

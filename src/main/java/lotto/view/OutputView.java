@@ -63,4 +63,8 @@ public class OutputView {
     private double calculateRateOfReturn(Long totalPrize, int money) {
         return ((double)totalPrize / money) * PERCENTAGE;
     }
+
+    public void printError(String message) {
+        System.out.println(message);
+    }
 }
