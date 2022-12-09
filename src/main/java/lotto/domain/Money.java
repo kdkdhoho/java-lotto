@@ -17,13 +17,13 @@ public class Money {
 
     private void isThousandUnit(int money) {
         if (money % UNIT != 0) {
-            throw new IllegalArgumentException(UNIT + "단위로 입력해주세요.");
+            throw new IllegalArgumentException(UNIT + "원 단위로 입력해주세요.");
         }
     }
 
     private void isMoreThanThousand(int money) {
         if (money < UNIT) {
-            throw new IllegalArgumentException(UNIT + "이상으로 입력해주세요.");
+            throw new IllegalArgumentException(UNIT + "원 이상으로 입력해주세요.");
         }
     }
 

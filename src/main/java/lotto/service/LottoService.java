@@ -26,11 +26,16 @@ public class LottoService {
         return player.getLottoNumbers();
     }
 
-    public void setManager(List<Integer> winningNumbers, int bonusNumber) {
-        Lotto winningLotto = new Lotto(winningNumbers);
-        Number numberResult = new Number(bonusNumber);
+    public Lotto generateWinningLotto(List<Integer> winningNumbers) {
+        return new Lotto(winningNumbers);
+    }
 
-        manager = new Manager(winningLotto, numberResult);
+    public Number generateBonusNumber(int bonusNumber) {
+        return new Number(bonusNumber);
+    }
+
+    public void setManager(Lotto winningLotto, Number bonusNumber) {
+        manager = new Manager(winningLotto, bonusNumber);
     }
 
     public Map<Rank, Integer> getResult() {

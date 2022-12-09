@@ -1,5 +1,7 @@
 package lotto.controller;
 
+import lotto.domain.Lotto;
+import lotto.domain.Number;
 import lotto.domain.Rank;
 import lotto.service.LottoService;
 import lotto.view.InputView;
@@ -31,8 +33,12 @@ public class LottoController {
 
     private void setManager() {
         List<Integer> winningNumbers = inputView.readWinningNumbers();
-        int bonusNumber = inputView.readBonusNumber();
-        lottoService.setManager(winningNumbers, bonusNumber);
+        Lotto winningLotto = lottoService.generateWinningLotto(winningNumbers);
+
+        int inputBonusNumber = inputView.readBonusNumber();
+        Number bonusNumber = lottoService.generateBonusNumber(inputBonusNumber);
+
+        lottoService.setManager(winningLotto, bonusNumber);
     }
 
     private void printTotalResult() {
