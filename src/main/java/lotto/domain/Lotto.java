@@ -44,18 +44,10 @@ public class Lotto {
     }
 
     private void validateDuplicate(List<Integer> numbers) {
-        Set<Integer> container = new HashSet<>();
-        for (Integer number : numbers) {
-            container.add(number);
-        }
-
+        Set<Integer> container = new HashSet<>(numbers);
         if (container.size() != numbers.size()) {
             throw new IllegalArgumentException();
         }
-    }
-
-    public boolean validateDuplicate(int number) {
-        return (numbers.contains(number));
     }
 
     public List<Integer> getNumbers() {

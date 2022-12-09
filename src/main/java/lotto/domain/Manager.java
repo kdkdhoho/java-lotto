@@ -3,6 +3,7 @@ package lotto.domain;
 import lotto.view.InputValidator;
 
 public class Manager {
+    public static final String ERROR_DUPLICATE = InputValidator.ERROR_PREFIX + "당첨 번호와 보너스 번호가 중복되었습니다.";
     public static final int LOTTO_AMOUNT_UNIT = 1000;
 
     private final Lotto winningLotto;
@@ -16,7 +17,7 @@ public class Manager {
 
     private void validate(Lotto winningLotto, BonusNumber bonusNumber) {
         if (winningLotto.contains(bonusNumber)) {
-            throw new IllegalArgumentException(InputValidator.ERROR_PREFIX + "당첨 번호와 보너스 번호가 중복되었습니다.");
+            throw new IllegalArgumentException(ERROR_DUPLICATE);
         }
     }
 

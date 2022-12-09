@@ -23,8 +23,4 @@ public class Lottos {
     public List<Lotto> getLottos() {
         return Collections.unmodifiableList(lottos);
     }
-
-    //    public void getResult(Manager manager) {
-//
-//    }
 }

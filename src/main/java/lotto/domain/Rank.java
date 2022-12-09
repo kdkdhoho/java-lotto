@@ -20,26 +20,22 @@ public enum Rank {
         this.prize = prize;
     }
 
+    public static Rank getRank(int correctCount, boolean correctBonus) {
+        return Arrays.stream(Rank.values())
+                .filter(rank -> rank.correctCount == correctCount && rank.correctBonus == correctBonus)
+                .findFirst()
+                .orElse(NONE);
+    }
+
+    public long calculate(int amount) {
+        return this.prize * (long)amount;
+    }
+
     public int getCorrectCount() {
         return correctCount;
     }
 
     public int getPrize() {
         return prize;
-    }
-
-    public static Rank getRank(int correctCount, boolean correctBonus) {
-        return Arrays.stream(Rank.values())
-                .filter(rank -> rank.isCorrectCount(correctCount) && rank.isCorrectBonus(correctBonus))
-                .findFirst()
-                .orElse(NONE);
-    }
-
-    public boolean isCorrectCount(int correctCount) {
-        return this.correctCount == correctCount;
-    }
-
-    public boolean isCorrectBonus(boolean correctBonus) {
-        return this.correctBonus == correctBonus;
     }
 }
