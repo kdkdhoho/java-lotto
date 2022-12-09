@@ -1,6 +1,6 @@
 package lotto.service;
 
-import lotto.domain.BonusNumber;
+import lotto.domain.Number;
 import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.Lottos;
@@ -14,8 +14,6 @@ import java.util.List;
 import java.util.Map;
 
 public class LottoService {
-    public static final String DELIMITER = ",";
-
     private final NumberGenerator numberGenerator = new LottoNumbersGenerator();
     private final LottoMachine lottoMachine = new LottoMachine(numberGenerator);
     private Player player;
@@ -32,9 +30,9 @@ public class LottoService {
 
     public void setManager(List<Integer> winningNumbers, int bonusNumber) {
         Lotto winningLotto = new Lotto(winningNumbers);
-        BonusNumber bonusNumberResult = new BonusNumber(bonusNumber);
+        Number numberResult = new Number(bonusNumber);
 
-        manager = new Manager(winningLotto, bonusNumberResult);
+        manager = new Manager(winningLotto, numberResult);
     }
 
     public Map<Rank, Integer> getResult() {

@@ -1,29 +1,26 @@
 package lotto.domain;
 
-import lotto.view.InputValidator;
-
 public class Manager {
-    public static final String ERROR_DUPLICATE = InputValidator.ERROR_PREFIX + "당첨 번호와 보너스 번호가 중복되었습니다.";
     public static final int LOTTO_AMOUNT_UNIT = 1000;
 
     private final Lotto winningLotto;
-    private final BonusNumber bonusNumber;
+    private final Number number;
 
-    public Manager(Lotto winningLotto, BonusNumber bonusNumber) {
-        validate(winningLotto, bonusNumber);
+    public Manager(Lotto winningLotto, Number number) {
+        validate(winningLotto, number);
         this.winningLotto = winningLotto;
-        this.bonusNumber = bonusNumber;
+        this.number = number;
     }
 
-    private void validate(Lotto winningLotto, BonusNumber bonusNumber) {
-        if (winningLotto.contains(bonusNumber)) {
-            throw new IllegalArgumentException(ERROR_DUPLICATE);
+    private void validate(Lotto winningLotto, Number number) {
+        if (winningLotto.contains(number)) {
+            throw new IllegalArgumentException("보너스 번호는 당첨 번호와 중복일 수 없습니다.");
         }
     }
 
     public Rank compare(Lotto playerLotto) {
         int correctCount = this.winningLotto.compare(playerLotto);
-        boolean correctBonus = this.winningLotto.contains(this.bonusNumber);
+        boolean correctBonus = this.winningLotto.contains(this.number);
 
         return Rank.getRank(correctCount, correctBonus);
     }

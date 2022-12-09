@@ -1,73 +1,64 @@
 package lotto.domain;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Lotto {
-    public static final String ERROR_MESSAGE = "[ERROR] Lotto 생성 중 예외가 발생했습니다.";
-    public static final int NUMBER_LOWER_BOUND = 1;
-    public static final int NUMBER_UPPER_BOUND = 45;
-    public static final int LOTTO_SIZE = 6;
+    public static final int SIZE = 6;
 
-    private final List<Integer> numbers;
+    private final List<Number> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.numbers = generateLotto(numbers);
     }
 
     private void validate(List<Integer> numbers) {
-        try {
-            validateSize(numbers);
-            validateRange(numbers);
-            validateDuplicate(numbers);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(ERROR_MESSAGE);
-        }
+        validateSize(numbers);
+        validateDuplicate(numbers);
     }
 
     private void validateSize(List<Integer> numbers) {
-        if (numbers.size() != LOTTO_SIZE) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void validateRange(List<Integer> numbers) {
-        for (Integer number : numbers) {
-            validateRange(number);
-        }
-    }
-
-    private void validateRange(int number) {
-        if (number < NUMBER_LOWER_BOUND || number > NUMBER_UPPER_BOUND) {
-            throw new IllegalArgumentException();
+        if (numbers.size() != SIZE) {
+            throw new IllegalArgumentException("로또 한 장은 숫자 6개 입니다.");
         }
     }
 
     private void validateDuplicate(List<Integer> numbers) {
         Set<Integer> container = new HashSet<>(numbers);
         if (container.size() != numbers.size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("로또 한 장에 숫자가 중복되면 안됩니다.");
         }
     }
 
-    public List<Integer> getNumbers() {
-        ArrayList<Integer> result = new ArrayList<>(this.numbers);
-        Collections.sort(result);
+    private List<Number> generateLotto(List<Integer> numbers) {
+        return numbers.stream()
+                .map(Number::new)
+                .collect(Collectors.toList());
+    }
+
+    public List<Number> getNumbers() {
+        List<Number> result = numbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
         return Collections.unmodifiableList(result);
     }
 
-    public boolean contains(BonusNumber bonusNumber) {
-        return numbers.contains(bonusNumber.getBonusNumber());
+    public boolean contains(Number number) {
+        return numbers.contains(number.getNumber());
     }
 
     public int compare(Lotto otherLotto) {
-        List<Integer> otherLottoNumbers = otherLotto.getNumbers();
-        Set<Integer> container = new HashSet<>(otherLottoNumbers);
+        List<Number> otherLottoNumbers = otherLotto.getNumbers();
+        Set<Number> container = new HashSet<>(otherLottoNumbers);
 
-        for (Integer number : this.numbers) {
+        for (Number number : this.numbers) {
             container.remove(number);
         }
 
-        return Lotto.LOTTO_SIZE - container.size();
+        return Lotto.SIZE - container.size();
     }
 }

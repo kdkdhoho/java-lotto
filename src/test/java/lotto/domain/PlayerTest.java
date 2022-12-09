@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThatNoException;
 class PlayerTest {
     private final NumberGenerator numberGenerator = new LottoNumbersGenerator();
     private final LottoMachine lottoMachine = new LottoMachine(numberGenerator);
-    private final Manager manager = new Manager(new Lotto(List.of(1, 2, 3, 4, 5, 6)), new BonusNumber(7));
+    private final Manager manager = new Manager(new Lotto(List.of(1, 2, 3, 4, 5, 6)), new Number(7));
 
     @DisplayName("1,000원 단위가 아니거나 1,000원 미만인 값이 Player에 들어갈 때 IllegalArgumentException 발생")
     @ParameterizedTest
