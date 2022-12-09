@@ -18,7 +18,7 @@ public class Manager {
 
     public Rank compare(Lotto playerLotto) {
         int correctCount = this.winningLotto.compare(playerLotto);
-        boolean correctBonus = this.winningLotto.contains(this.bonusNumber);
+        boolean correctBonus = playerLotto.contains(this.bonusNumber);
 
         return Rank.getRank(correctCount, correctBonus);
     }
