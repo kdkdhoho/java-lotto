@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import lotto.domain.numbergenerator.LottoNumbersGenerator;
-import lotto.domain.numbergenerator.NumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,8 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 
 class LottoMachineTest {
-    private final NumberGenerator numberGenerator = new LottoNumbersGenerator();
-    private final LottoMachine lottoMachine = new LottoMachine(numberGenerator);
+    private final LottoMachine lottoMachine = new LottoMachine();
     private final Money money = new Money(3000);
 
     @DisplayName("LottoMachine을 통해 만들어진 Lotto는 lotto.validate를 통과해야한다.")

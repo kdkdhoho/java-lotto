@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import lotto.domain.numbergenerator.LottoNumbersGenerator;
-import lotto.domain.numbergenerator.NumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -10,8 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import static org.assertj.core.api.Assertions.assertThatNoException;
 
 class PlayerTest {
-    private final NumberGenerator numberGenerator = new LottoNumbersGenerator();
-    private final LottoMachine lottoMachine = new LottoMachine(numberGenerator);
+    private final LottoMachine lottoMachine = new LottoMachine();
 
     @DisplayName("1,000원 단위가 아니거나 1,000원 미만인 값이 Player에 들어갈 때 IllegalArgumentException 발생")
     @ParameterizedTest
