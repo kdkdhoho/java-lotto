@@ -14,13 +14,13 @@ public class LottoMachine {
         this.numberGenerator = numberGenerator;
     }
 
-    public Lottos exchange(int money) {
-        validate(money);
+    public Lottos exchange(int purchaseMoney) {
+        validate(purchaseMoney);
         List<Lotto> lottos = new ArrayList<>();
 
-        while (money > 0) {
+        while (purchaseMoney > 0) {
             lottos.add(generateLotto());
-            money -= Manager.LOTTO_AMOUNT_UNIT;
+            purchaseMoney -= UNIT;
         }
         return new Lottos(lottos);
     }

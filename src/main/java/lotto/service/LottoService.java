@@ -21,9 +21,9 @@ public class LottoService {
     private Player player;
     private Manager manager;
 
-    public void setPlayer(int money) {
-        Lottos lottos = lottoMachine.exchange(money);
-        player = new Player(lottos, money);
+    public void setPlayer(int purchaseMoney) {
+        Lottos purchasedLottos = lottoMachine.exchange(purchaseMoney);
+        player = new Player(purchasedLottos, purchaseMoney);
     }
 
     public List<List<Integer>> getPlayerLottoNumbers() {
