@@ -1,8 +1,8 @@
 package lotto.domain;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lottos {
     private final List<Lotto> lottos;
@@ -12,12 +12,9 @@ public class Lottos {
     }
 
     public List<List<Integer>> getLottoNumbers() {
-        List<List<Integer>> lottoNumbers = new ArrayList<>();
-        for (Lotto lotto : lottos) {
-            List<Integer> numbers = lotto.getNumbers();
-            lottoNumbers.add(numbers);
-        }
-        return lottoNumbers;
+        return lottos.stream()
+                .map(Lotto::getNumbers)
+                .collect(Collectors.toList());
     }
 
     public List<Lotto> getLottos() {
